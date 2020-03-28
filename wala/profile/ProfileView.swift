@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ProfileView.swift
 //  wala
 //
 //  Created by Roland Michelberger on 28.03.20.
@@ -8,16 +8,16 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ProfileView: View {
     var body: some View {
         Text("Hello, World!")
     }
 }
 
 #if DEBUG
-struct ContentView_Previews: PreviewProvider {
+struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ProfileView()
     }
 }
 #endif
