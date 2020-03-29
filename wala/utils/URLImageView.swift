@@ -43,19 +43,19 @@ struct URLImageView<PlaceHolder, ClipShape: Shape>: View where PlaceHolder: View
 //                }
             }
             .onDisappear(){
-                print("onDisappear")
+//                print("onDisappear")
                 self.imageLoaderSub?.cancel()
             }
             .onAppear() {
                 if self.image == nil {
-                    print("onAppear")
+//                    print("onAppear")
                     self.imageLoaderSub?.cancel()
                     self.imageLoaderSub = self.imageLoader.didLoad
                         .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
                         .subscribe(on: RunLoop.main)
                         .sink { (image) in
                             self.image = image
-                            print(image.size)
+//                            print(image.size)
                     }
                 }
             }
@@ -94,7 +94,7 @@ class ImageLoader: ObservableObject {
                     if let image = UIImage(data: data) {
                         ImageLoader.cache[url] = image
                         self?.didLoad.send(image)
-                        print(url)
+//                        print(url)
                     }
                 }
             }

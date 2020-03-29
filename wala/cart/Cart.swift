@@ -8,6 +8,11 @@
 
 import SwiftUI
 
+enum Delivery {
+    case pickup
+    case delivered
+}
+
 struct Cart {
     
     private init(){}
@@ -18,10 +23,31 @@ struct Cart {
 //    @Published var totalPrice = Money(currency: .CHF, amount: 0)
 
     var totalPrice: Money {
-        let amount = orders.reduce(0) { (result, order) -> Double in
+        var amount = orders.reduce(0) { (result, order) -> Double in
+            print("\(order.product.name) \(order.amount)")
             return result + (order.product.price.amount * Double(order.amount))
         }
+        if delivery == .delivered {
+            amount += 5
+        }
+        print("total: \(amount)")
         return  Money(currency: .CHF, amount: amount)
+    }
+    
+    var delivery: Delivery = .pickup {
+        didSet {
+            didUpdate()
+        }
+    }
+    
+    func didUpdate() {
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("CartDidUpdate"), object: nil)
+    }
+    
+    mutating func clear() {
+        orders.removeAll()
+        didUpdate()
     }
     
     mutating func add(product: Product) -> Bool {
@@ -33,11 +59,18 @@ struct Cart {
         shopId = product.shopId
         
         if var order = orders.filter({$0.product.id == product.id}).first {
+            print("increase")
             order.amount += 1
         } else {
+            print("new")
             orders.append(Order(product: product, amount: 1))
         }
         
+        for order in orders {
+            print("\(order.product.name) \(order.amount)")
+        }
+        
+        didUpdate()
         
         return true
     }
@@ -50,6 +83,8 @@ struct Cart {
             } else {
                 orders.remove(at: i)
             }
+            
+            didUpdate()
         }
     }
         

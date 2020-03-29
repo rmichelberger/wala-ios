@@ -13,9 +13,9 @@ struct OrderRow: View {
     let order: Order
     
     var body: some View {
-        VStack {
-        Text(order.product.name)
-        Text("\(order.amount)")
+        VStack(alignment: .leading) {
+            Text(order.product.name)
+            Text("\(order.product.price.string)").font(.headline)
         }
     }
 }
@@ -23,7 +23,10 @@ struct OrderRow: View {
 #if DEBUG
 struct OrderRow_Previews: PreviewProvider {
     static var previews: some View {
-        OrderRow(order: Order.mock)
+        List{
+            OrderRow(order: Order.mock)
+            OrderRow(order: Order.mock)
+        }
     }
 }
 #endif
