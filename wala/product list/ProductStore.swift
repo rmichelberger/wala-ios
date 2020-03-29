@@ -10,7 +10,7 @@ import SwiftUI
 
 final class ProductStore: ObservableObject {
     
-    @Published var products = [Product]()
+    @Published private(set) var products = [Product]()
 
     func loadProducts(for shop: Shop) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in

@@ -16,18 +16,18 @@ struct ProductRow: View {
     
     
     var body: some View {
-        HStack {
-            URLImageView(url: URL(string: product.imageUrl), clipShape: Rectangle()) {
-                Rectangle().fill(Color.wala)
-            }.frame(width: 100, height: 100)
-            VStack(alignment: .leading) {
-                Text(product.name)
-                Text(product.description).font(.caption)
+        VStack(alignment: .leading) {
+            HStack {
+                URLImageView(url: URL(string: product.imageUrl), clipShape: Rectangle()) {
+                    Rectangle().fill(Color.wala)
+                }.frame(width: 100, height: 100)
+                
+                VStack(alignment: .leading) {
+                    Text(product.name)
+                    Text(product.price.string).font(.headline)
+                    Spacer()
+                }
                 Spacer()
-                Text(product.price.string).font(.headline)
-            }
-            Spacer()
-//            VStack{
                 Button(action: {
                     self.wrongShop = !Cart.shared.add(product: self.product)
                 }) {
@@ -36,14 +36,15 @@ struct ProductRow: View {
                         .accessibility(hint: Text("Add product to cart"))
                         .padding(8).accentColor(Color.wala)
                 }.accentColor(Color.wala)
-
-                
-//            }
-        } .alert(isPresented: self.$wrongShop) {
+            }
+            Text(product.description).font(.caption)
+            
+        }
+        .alert(isPresented: self.$wrongShop) {
             Alert(title: Text("You have already ordered from other shop."), message: Text("Please continue order from the same shop, or go to \"Cart\" tab, and empty your cart."), dismissButton: .default(Text("Ok")))
             
         }
-
+        
     }
     
 }

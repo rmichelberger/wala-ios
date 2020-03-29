@@ -26,16 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        
-//        let orange = UIColor(red: CGFloat(216.0/255.0), green: CGFloat(90.0/255.0), blue: CGFloat(57.0/255.0), alpha: CGFloat(1.0))
-////        UITabBar.appearance().barTintColor = orange
-//        UITabBar.appearance().tintColor = .white
 
-
-        // Create the SwiftUI view that provides the window contents.
         
         let contentView = TabContainverView()
 //        let contentView = ShopTestView()

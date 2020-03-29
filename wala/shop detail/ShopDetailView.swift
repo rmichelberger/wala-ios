@@ -38,8 +38,15 @@ struct ShopDetailView: View {
                 }.frame(height: 200)
                 
                 Text("About").font(.headline).padding()
-                Text(shop.about).padding()
-                
+                Text(shop.about).padding(.horizontal
+                )
+
+                Text("Phone").font(.headline).padding()
+                Text("+41 78 1223 1212").padding(.horizontal)
+
+                Text("Pickup times").font(.headline).padding()
+                Text("Mo-Fr: 09:00-18:00").padding(.horizontal)
+
                 
             }
         }

@@ -35,32 +35,32 @@ struct URLImageView<PlaceHolder, ClipShape: Shape>: View where PlaceHolder: View
                 if self.image == nil {
                     self.placeHolder().clipShape(self.clipShape)
                 }
-//                else {
+                else {
                 Image(uiImage: self.image ?? UIImage())
                     .resizable()
                     .aspectRatio(contentMode: self.contentMode)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .clipped()
                     .clipShape(self.clipShape)
-//                }
+                }
             }
             .onDisappear(){
 //                print("onDisappear")
                 self.imageLoaderSub?.cancel()
             }
             .onAppear() {
-                if self.image == nil {
+//                if self.image == nil {
 //                    print("onAppear")
                     self.imageLoaderSub?.cancel()
                     self.imageLoaderSub = self.imageLoader.didLoad
-                        .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+//                        .debounce(for: .milliseconds(1500), scheduler: RunLoop.main)
                         .subscribe(on: RunLoop.main)
                         .sink { (image) in
                             self.image = image
-//                            print(image.size)
+                            print(image.size)
                     }
                 }
-            }
+//            }
         }
     }
 }
@@ -83,9 +83,9 @@ class ImageLoader: ObservableObject {
         
         // get from cache
         if let image = ImageLoader.cache[url] {
-            DispatchQueue.main.async {
-//                print("cache \(url)")
-                self.didLoad.send(image)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.didLoad.send(image)
+//            print("cache")
             }
         } else {
             
@@ -97,6 +97,7 @@ class ImageLoader: ObservableObject {
                         ImageLoader.cache[url] = image
                         self?.didLoad.send(image)
 //                        print(url)
+//                        print("web")
                     }
                 }
             }

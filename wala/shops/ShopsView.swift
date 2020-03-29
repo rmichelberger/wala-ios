@@ -14,6 +14,8 @@ struct ShopsView: View {
     @State var isActive: Bool = false
     @State var selectedShop: Shop?
     
+    @ObservedObject private var shopStore = ShopStore()
+    
     var topInsets: CGFloat {
         if let window = UIApplication.shared.delegate?.window, let orientation = window?.windowScene?.interfaceOrientation, let safeAreaInsets = window?.safeAreaInsets {
             if orientation.isPortrait {
@@ -25,7 +27,6 @@ struct ShopsView: View {
         return 0
     }
     
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -33,7 +34,7 @@ struct ShopsView: View {
                 NavigationLink(destination: ShopDetailView(shop: selectedShop ?? Shop.mock.first!), isActive: self.$isActive) {
                     EmptyView()
                 }
-                MapView(shops: Shop.mock, isActive: $isActive, selectedShop: $selectedShop)        .edgesIgnoringSafeArea(.top)
+                MapView(shops: shopStore.shops, isActive: $isActive, selectedShop: $selectedShop)        .edgesIgnoringSafeArea(.top)
                 
                 VStack {
                     HStack(alignment: .top) {

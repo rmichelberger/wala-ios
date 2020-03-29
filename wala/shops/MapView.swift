@@ -20,10 +20,10 @@ class ShopAnnotation: MKPointAnnotation {
 struct MapView: UIViewRepresentable {
     
     
-    let shops: [Shop]
+    //    @Binding
+    var shops: [Shop]
     @Binding var isActive: Bool
     @Binding var selectedShop: Shop?
-    
     
     private let locationManager = CLLocationManager()
     
@@ -43,8 +43,10 @@ struct MapView: UIViewRepresentable {
         view.delegate = context.coordinator
         
         
-        let region = MKCoordinateRegion(center: shops.first!.coordinates, latitudinalMeters: 50, longitudinalMeters: 50)
-        view.setRegion(region, animated: true)
+        if let shop = shops.first {
+            let region = MKCoordinateRegion(center: shop.coordinates, latitudinalMeters: 50, longitudinalMeters: 50)
+            view.setRegion(region, animated: true)
+        }
         
         view.removeAnnotations(view.annotations)
         
@@ -105,7 +107,7 @@ struct MapView: UIViewRepresentable {
                 annotationView?.clusteringIdentifier = identifier
                 annotationView?.markerTintColor = shopAnnotation.shop.category.color
                 annotationView?.tintColor = shopAnnotation.shop.category.color
-
+                
             } else {
                 annotationView?.annotation = annotation
                 annotationView?.markerTintColor = shopAnnotation.shop.category.color
@@ -122,11 +124,5 @@ struct MapView: UIViewRepresentable {
             mapViewController.selectedShop = shopAnnnotation.shop
         }
         
-    }
-}
-
-struct MapView_Previews: PreviewProvider {
-    static var previews: some View {
-        MapView(shops: Shop.mock, isActive: .constant(false), selectedShop: .constant(nil))
     }
 }

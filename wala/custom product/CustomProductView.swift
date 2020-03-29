@@ -35,7 +35,7 @@ Examples:
                 Spacer()
                 Button("Add to cart") {
                     let product = Product(id: UUID().uuidString, name: "Wish list", description: self.text, price: Money.zero, imageUrl: "", shopId: self.shop.id)
-                    Cart.shared.add(product: product)
+                    let _ = Cart.shared.add(product: product)
                     
                     self.presentationMode.wrappedValue.dismiss()
                     

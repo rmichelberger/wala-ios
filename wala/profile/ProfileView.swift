@@ -33,7 +33,7 @@ struct ProfileView: View {
                 Section {
                     HStack {
                         Spacer()
-                        Image(systemName: "cart").resizable().frame(width: 200, height: 200)
+                        Image(systemName: "cart").resizable().frame(width: 200, height: 200).background(Color.black)
                         Spacer()
                     }.padding(.vertical, 30)
                 }

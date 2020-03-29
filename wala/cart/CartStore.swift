@@ -13,7 +13,7 @@ final class CartStore: ObservableObject {
     
     
     var ordersPublisher = PassthroughSubject<[Order], Never>()
-    @Published var totalPrice = Money(currency: .CHF, amount: 0)
+    @Published private(set) var totalPrice = Money(currency: .CHF, amount: 0)
     
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(update), name: Notification.Name("CartDidUpdate"), object: nil)
