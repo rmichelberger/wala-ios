@@ -11,6 +11,8 @@ import SwiftUI
 
 struct TabContainverView: View {
     
+    
+
        
     var body: some View {
         TabView {
@@ -20,19 +22,26 @@ struct TabContainverView: View {
                     Text("Shops")
             }.tag(0)
 
-            DiscoverView()
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("Discover")
-            }.tag(1)
+//            DiscoverView()
+//                .tabItem {
+//                    Image(systemName: "magnifyingglass")
+//                    Text("Discover")
+//            }.tag(1)
 
+            CartView()
+                .tabItem {
+                    Image(systemName: "cart")
+                    Text("Cart")
+                }.tag(1)
+
+            
             ProfileView()
                 .tabItem {
                     Image(systemName: "person")
                     Text("Me")
             }.tag(2)
 
-        }
+        }.accentColor(Color.wala)
         .edgesIgnoringSafeArea(.top)
         .onAppear() {
         }

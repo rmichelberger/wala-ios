@@ -19,6 +19,10 @@ final class ProductStore: ObservableObject {
             var products = Product.mock
             products.insert(Product.custom, at: 0)
             products.insert(Product.voucher, at: 0)
+            
+            products.append(Product.voucher)
+            products.append(Product.custom)
+
             self?.products = products
             self?.loading = false
             print(self?.products.count ?? 0)

@@ -16,10 +16,10 @@ struct URLImageView<PlaceHolder, ClipShape: Shape>: View where PlaceHolder: View
     let clipShape: ClipShape
     
     @ObservedObject private var imageLoader: ImageLoader
-    @State private var image = UIImage()
-    
     @State private var imageLoaderSub: AnyCancellable?
 
+    @State private var image: UIImage?
+    
     
     init(url: URL?, clipShape: ClipShape, placeHolder: @escaping () -> PlaceHolder) {
         imageLoader = ImageLoader(url: url)
@@ -30,22 +30,33 @@ struct URLImageView<PlaceHolder, ClipShape: Shape>: View where PlaceHolder: View
     var body: some View {
         GeometryReader { geometry in
             ZStack{
-                self.placeHolder().clipShape(self.clipShape)
-                Image(uiImage: self.image)
+                if self.image == nil {
+                    self.placeHolder().clipShape(self.clipShape)
+                }
+//                else {
+                Image(uiImage: self.image ?? UIImage())
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .clipped()
                     .clipShape(self.clipShape)
-            }.onAppear() {
-                print("onAppear")
+//                }
+            }
+            .onDisappear(){
+                print("onDisappear")
                 self.imageLoaderSub?.cancel()
-                self.imageLoaderSub = self.imageLoader.didLoad
-                    .debounce(for: .milliseconds(100), scheduler: RunLoop.main)
-                    .subscribe(on: RunLoop.main)
-                    .sink { (image) in
-                        self.image = image
-                        print(image.size)
+            }
+            .onAppear() {
+                if self.image == nil {
+                    print("onAppear")
+                    self.imageLoaderSub?.cancel()
+                    self.imageLoaderSub = self.imageLoader.didLoad
+                        .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+                        .subscribe(on: RunLoop.main)
+                        .sink { (image) in
+                            self.image = image
+                            print(image.size)
+                    }
                 }
             }
         }
@@ -71,7 +82,7 @@ class ImageLoader: ObservableObject {
         // get from cache
         if let image = ImageLoader.cache[url] {
             DispatchQueue.main.async {
-                print("cache \(url)")
+//                print("cache \(url)")
                 self.didLoad.send(image)
             }
         } else {

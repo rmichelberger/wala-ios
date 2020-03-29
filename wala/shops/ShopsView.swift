@@ -12,14 +12,27 @@ import SwiftUI
 struct ShopsView: View {
     
     
+    
+
     @State var isActive: Bool = false
     @State var selectedShop: Shop?
+    
+    var topInsets: CGFloat {
+        if let window = UIApplication.shared.delegate?.window, let orientation = window?.windowScene?.interfaceOrientation, let safeAreaInsets = window?.safeAreaInsets {
+            if orientation.isPortrait {
+                return safeAreaInsets.top
+            } else {
+                return safeAreaInsets.left
+            }
+        }
+        return 0
+    }
     
     
     var body: some View {
         NavigationView {
             ZStack {
-//                NavigationLink(destination: ShopDetailView(shop: selectedShop), isActive: self.$isActive) {
+                //                NavigationLink(destination: ShopDetailView(shop: selectedShop), isActive: self.$isActive) {
                 NavigationLink(destination: ShopDetailView(shop: Shop.mock.first), isActive: self.$isActive) {
                     EmptyView()
                 }
@@ -27,18 +40,25 @@ struct ShopsView: View {
                 
                 VStack {
                     HStack(alignment: .top) {
-                    Rectangle().fill(Color.black).frame(width: 30, height: 30)
-                    Rectangle().fill(Color.black).frame(width: 30, height: 30)
-                    Rectangle().fill(Color.black).frame(width: 30, height: 30)
-                    Rectangle().fill(Color.black).frame(width: 30, height: 30)
-                    }//.frame(height: 80)
-                Spacer()
-                }//.padding(.top, 40)
+                        
+                        RoundedRectangle(cornerRadius: 10).fill(Color.blue).frame(width: 30, height: 30)
+                        RoundedRectangle(cornerRadius: 10).fill(Color.orange).frame(width: 30, height: 30)
+                        RoundedRectangle(cornerRadius: 10).fill(Color.purple).frame(width: 30, height: 30)
+                        RoundedRectangle(cornerRadius: 10).fill(Color.pink).frame(width: 30, height: 30)
+                        RoundedRectangle(cornerRadius: 10).fill(Color.green).frame(width: 30, height: 30)
+                        RoundedRectangle(cornerRadius: 10).fill(Color.yellow).frame(width: 30, height: 30)
+                        RoundedRectangle(cornerRadius: 10).fill(Color.red).frame(width: 30, height: 30)
 
+                    }
+                    //.frame(height: 80)
+                    Spacer()
+                }.padding(.top, 50)
+                //.padding(.top, 40)
+                
             }
-//            .navigationBarTitle("Shops")
-            //.edgesIgnoringSafeArea(.top)
-
+//                            .navigationBarTitle("Shops")
+                .edgesIgnoringSafeArea(.top)
+            
         }
     }
 }

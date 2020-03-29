@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ShopDetailView: View {
     
+
     let shop: Shop?
     
     private let productStore = ProductStore()
@@ -43,8 +44,9 @@ struct ShopDetailView: View {
             }
         }
         .navigationBarItems(trailing:
-            NavigationLink(destination: ProductListView(shop: shop, productStore: self.productStore ), label: {
-                Image(systemName: "cart")
+            NavigationLink(destination: ProductListView(shop: shop, productStore: self.productStore), label: {
+                Text("Products")
+//                Image(systemName: "cart")
             }
         ))
             //        .edgesIgnoringSafeArea(.top)
