@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,8 @@
 		5492E6B12430AF73002B5B5A /* OrderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492E6B02430AF73002B5B5A /* OrderRow.swift */; };
 		5492E6B32430CA4D002B5B5A /* CartStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492E6B22430CA4D002B5B5A /* CartStore.swift */; };
 		5492E6B52430F344002B5B5A /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492E6B42430F343002B5B5A /* ProfileStore.swift */; };
+		5492E6B72430FE2F002B5B5A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5492E6B62430FE2F002B5B5A /* GoogleService-Info.plist */; };
+		89636BC3A420F190B15C850D /* Pods_wala.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 811D9F3B3AF462815D6D1266 /* Pods_wala.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,10 @@
 		5492E6B02430AF73002B5B5A /* OrderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRow.swift; sourceTree = "<group>"; };
 		5492E6B22430CA4D002B5B5A /* CartStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartStore.swift; sourceTree = "<group>"; };
 		5492E6B42430F343002B5B5A /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
+		5492E6B62430FE2F002B5B5A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		811D9F3B3AF462815D6D1266 /* Pods_wala.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wala.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E13F86BA58EDEE81FA68890C /* Pods-wala.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wala.debug.xcconfig"; path = "Target Support Files/Pods-wala/Pods-wala.debug.xcconfig"; sourceTree = "<group>"; };
+		E386226FA8C83B8F4DF88D44 /* Pods-wala.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wala.release.xcconfig"; path = "Target Support Files/Pods-wala/Pods-wala.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,17 +81,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89636BC3A420F190B15C850D /* Pods_wala.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		118EA119BAB03F576DC57C49 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E13F86BA58EDEE81FA68890C /* Pods-wala.debug.xcconfig */,
+				E386226FA8C83B8F4DF88D44 /* Pods-wala.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		5492E65F242EC2EC002B5B5A = {
 			isa = PBXGroup;
 			children = (
 				5492E66A242EC2ED002B5B5A /* wala */,
 				5492E669242EC2ED002B5B5A /* Products */,
+				118EA119BAB03F576DC57C49 /* Pods */,
+				673CA0C188AC6CCFDF53B3B7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +118,7 @@
 		5492E66A242EC2ED002B5B5A /* wala */ = {
 			isa = PBXGroup;
 			children = (
+				5492E6B62430FE2F002B5B5A /* GoogleService-Info.plist */,
 				5492E6A72430994D002B5B5A /* product detail */,
 				5492E6A624309933002B5B5A /* product list */,
 				5492E6A12430985D002B5B5A /* cart */,
@@ -205,6 +224,14 @@
 			path = "product detail";
 			sourceTree = "<group>";
 		};
+		673CA0C188AC6CCFDF53B3B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				811D9F3B3AF462815D6D1266 /* Pods_wala.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -212,9 +239,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5492E67C242EC2F1002B5B5A /* Build configuration list for PBXNativeTarget "wala" */;
 			buildPhases = (
+				5EE8E079468EFD356A266110 /* [CP] Check Pods Manifest.lock */,
 				5492E664242EC2ED002B5B5A /* Sources */,
 				5492E665242EC2ED002B5B5A /* Frameworks */,
 				5492E666242EC2ED002B5B5A /* Resources */,
+				863F35E5353A643E0CB5DE3D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -266,10 +295,53 @@
 				5492E678242EC2F1002B5B5A /* LaunchScreen.storyboard in Resources */,
 				5492E675242EC2F1002B5B5A /* Preview Assets.xcassets in Resources */,
 				5492E672242EC2F1002B5B5A /* Assets.xcassets in Resources */,
+				5492E6B72430FE2F002B5B5A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5EE8E079468EFD356A266110 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-wala-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		863F35E5353A643E0CB5DE3D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wala/Pods-wala-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wala/Pods-wala-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wala/Pods-wala-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5492E664242EC2ED002B5B5A /* Sources */ = {
@@ -434,6 +506,7 @@
 		};
 		5492E67D242EC2F1002B5B5A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E13F86BA58EDEE81FA68890C /* Pods-wala.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -454,6 +527,7 @@
 		};
 		5492E67E242EC2F1002B5B5A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E386226FA8C83B8F4DF88D44 /* Pods-wala.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
