@@ -14,6 +14,7 @@ struct URLImageView<PlaceHolder, ClipShape: Shape>: View where PlaceHolder: View
     
     let placeHolder: () -> PlaceHolder
     let clipShape: ClipShape
+    let contentMode: ContentMode
     
     @ObservedObject private var imageLoader: ImageLoader
     @State private var imageLoaderSub: AnyCancellable?
@@ -21,10 +22,11 @@ struct URLImageView<PlaceHolder, ClipShape: Shape>: View where PlaceHolder: View
     @State private var image: UIImage?
     
     
-    init(url: URL?, clipShape: ClipShape, placeHolder: @escaping () -> PlaceHolder) {
+    init(url: URL?, clipShape: ClipShape, contentMode: ContentMode = .fill, placeHolder: @escaping () -> PlaceHolder) {
         imageLoader = ImageLoader(url: url)
         self.placeHolder = placeHolder
         self.clipShape = clipShape
+        self.contentMode = contentMode
     }
     
     var body: some View {
@@ -36,7 +38,7 @@ struct URLImageView<PlaceHolder, ClipShape: Shape>: View where PlaceHolder: View
 //                else {
                 Image(uiImage: self.image ?? UIImage())
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(contentMode: self.contentMode)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .clipped()
                     .clipShape(self.clipShape)

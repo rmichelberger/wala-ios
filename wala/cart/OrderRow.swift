@@ -15,7 +15,8 @@ struct OrderRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(order.product.name)
-            Text("\(order.product.price.string)").font(.headline)
+//            Text("Amount: \(order.amount)").font(.caption)
+            Text(order.product.price.string).font(.headline)
         }
     }
 }

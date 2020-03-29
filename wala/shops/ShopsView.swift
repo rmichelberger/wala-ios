@@ -10,10 +10,7 @@
 import SwiftUI
 
 struct ShopsView: View {
-    
-    
-    
-
+            
     @State var isActive: Bool = false
     @State var selectedShop: Shop?
     
@@ -33,7 +30,7 @@ struct ShopsView: View {
         NavigationView {
             ZStack {
                 //                NavigationLink(destination: ShopDetailView(shop: selectedShop), isActive: self.$isActive) {
-                NavigationLink(destination: ShopDetailView(shop: Shop.mock.first), isActive: self.$isActive) {
+                NavigationLink(destination: ShopDetailView(shop: selectedShop ?? Shop.mock.first!), isActive: self.$isActive) {
                     EmptyView()
                 }
                 MapView(shops: Shop.mock, isActive: $isActive, selectedShop: $selectedShop)        .edgesIgnoringSafeArea(.top)

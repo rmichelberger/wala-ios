@@ -20,8 +20,9 @@ struct Cart {
     var shopId: String?
     
     var orders = [Order]()
-//    @Published var totalPrice = Money(currency: .CHF, amount: 0)
+//    var orders = [Order.mock]
 
+    
     var totalPrice: Money {
         var amount = orders.reduce(0) { (result, order) -> Double in
             print("\(order.product.name) \(order.amount)")
@@ -30,7 +31,6 @@ struct Cart {
         if delivery == .delivered {
             amount += 5
         }
-        print("total: \(amount)")
         return  Money(currency: .CHF, amount: amount)
     }
     
@@ -46,6 +46,7 @@ struct Cart {
     }
     
     mutating func clear() {
+        shopId = nil
         orders.removeAll()
         didUpdate()
     }

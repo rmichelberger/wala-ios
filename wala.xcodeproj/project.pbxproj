@@ -36,6 +36,9 @@
 		5492E6B32430CA4D002B5B5A /* CartStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492E6B22430CA4D002B5B5A /* CartStore.swift */; };
 		5492E6B52430F344002B5B5A /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492E6B42430F343002B5B5A /* ProfileStore.swift */; };
 		5492E6B72430FE2F002B5B5A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5492E6B62430FE2F002B5B5A /* GoogleService-Info.plist */; };
+		5492E6BA24310CF5002B5B5A /* CustomProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492E6B924310CF5002B5B5A /* CustomProductView.swift */; };
+		5492E6BC2431151B002B5B5A /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492E6BB2431151B002B5B5A /* TextView.swift */; };
+		5492E6BE24311929002B5B5A /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5492E6BD24311929002B5B5A /* AdaptsToSoftwareKeyboard.swift */; };
 		89636BC3A420F190B15C850D /* Pods_wala.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 811D9F3B3AF462815D6D1266 /* Pods_wala.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +74,9 @@
 		5492E6B22430CA4D002B5B5A /* CartStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartStore.swift; sourceTree = "<group>"; };
 		5492E6B42430F343002B5B5A /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		5492E6B62430FE2F002B5B5A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5492E6B924310CF5002B5B5A /* CustomProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProductView.swift; sourceTree = "<group>"; };
+		5492E6BB2431151B002B5B5A /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		5492E6BD24311929002B5B5A /* AdaptsToSoftwareKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToSoftwareKeyboard.swift; sourceTree = "<group>"; };
 		811D9F3B3AF462815D6D1266 /* Pods_wala.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wala.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E13F86BA58EDEE81FA68890C /* Pods-wala.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wala.debug.xcconfig"; path = "Target Support Files/Pods-wala/Pods-wala.debug.xcconfig"; sourceTree = "<group>"; };
 		E386226FA8C83B8F4DF88D44 /* Pods-wala.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wala.release.xcconfig"; path = "Target Support Files/Pods-wala/Pods-wala.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +124,7 @@
 		5492E66A242EC2ED002B5B5A /* wala */ = {
 			isa = PBXGroup;
 			children = (
+				5492E6B824310CD9002B5B5A /* custom product */,
 				5492E6B62430FE2F002B5B5A /* GoogleService-Info.plist */,
 				5492E6A72430994D002B5B5A /* product detail */,
 				5492E6A624309933002B5B5A /* product list */,
@@ -186,9 +193,11 @@
 		5492E694242FDD60002B5B5A /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				5492E6BB2431151B002B5B5A /* TextView.swift */,
 				5492E692242FDD43002B5B5A /* URLImageView.swift */,
 				5492E695242FDD8D002B5B5A /* Cache.swift */,
 				5492E69B242FED66002B5B5A /* Money.swift */,
+				5492E6BD24311929002B5B5A /* AdaptsToSoftwareKeyboard.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -222,6 +231,14 @@
 				5492E6A82430995A002B5B5A /* ProductView.swift */,
 			);
 			path = "product detail";
+			sourceTree = "<group>";
+		};
+		5492E6B824310CD9002B5B5A /* custom product */ = {
+			isa = PBXGroup;
+			children = (
+				5492E6B924310CF5002B5B5A /* CustomProductView.swift */,
+			);
+			path = "custom product";
 			sourceTree = "<group>";
 		};
 		673CA0C188AC6CCFDF53B3B7 /* Frameworks */ = {
@@ -351,6 +368,7 @@
 				5492E6A92430995A002B5B5A /* ProductView.swift in Sources */,
 				5492E6A32430986A002B5B5A /* CartView.swift in Sources */,
 				5492E68E242FA69A002B5B5A /* ShopDetailView.swift in Sources */,
+				5492E6BA24310CF5002B5B5A /* CustomProductView.swift in Sources */,
 				5492E6A524309895002B5B5A /* Cart.swift in Sources */,
 				5492E6AF2430AE3A002B5B5A /* Order.swift in Sources */,
 				5492E66C242EC2ED002B5B5A /* AppDelegate.swift in Sources */,
@@ -364,6 +382,7 @@
 				5492E6AB24309A7F002B5B5A /* ProductRow.swift in Sources */,
 				5492E6B12430AF73002B5B5A /* OrderRow.swift in Sources */,
 				5492E689242F9133002B5B5A /* ProfileView.swift in Sources */,
+				5492E6BE24311929002B5B5A /* AdaptsToSoftwareKeyboard.swift in Sources */,
 				5492E691242FC7B6002B5B5A /* DiscoverView.swift in Sources */,
 				5492E698242FECEF002B5B5A /* ProductListView.swift in Sources */,
 				5492E6B32430CA4D002B5B5A /* CartStore.swift in Sources */,
@@ -371,6 +390,7 @@
 				5492E670242EC2ED002B5B5A /* ContentView.swift in Sources */,
 				5492E696242FDD8D002B5B5A /* Cache.swift in Sources */,
 				5492E6A024307FCD002B5B5A /* Extensions.swift in Sources */,
+				5492E6BC2431151B002B5B5A /* TextView.swift in Sources */,
 				5492E68B242F93CC002B5B5A /* Shop.swift in Sources */,
 				5492E69A242FED3A002B5B5A /* Product.swift in Sources */,
 			);

@@ -10,24 +10,27 @@ import SwiftUI
 
 struct ProductListView: View {
     
-
-    let shop: Shop?
+    
+    let shop: Shop
     @ObservedObject var productStore: ProductStore
-        
+    
     var body: some View {
         VStack{
             
             List(self.productStore.products) { product in
-//                NavigationLink(destination: ProductView(product: product)) {
                 ProductRow(product: product)
-//                }
             }.onAppear(){
-                if let shop = self.shop {
-                    self.productStore.loadProducts(for: shop)
-                }
+                self.productStore.loadProducts(for: self.shop)
             }
         }
-        .navigationBarTitle("Products")
+        .navigationBarItems(trailing:
+            NavigationLink(destination: CustomProductView(shop: shop), label: {
+                //                Text("Products")
+                Image(systemName: "square.and.pencil")
+            }
+        ))
+            
+            .navigationBarTitle("Products")
     }
 }
 

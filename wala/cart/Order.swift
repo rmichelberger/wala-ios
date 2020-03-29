@@ -25,7 +25,5 @@ struct Order: Identifiable {
 
 extension Order {
     
-    static let empty = Order(product: Product.empty, amount: 0)
-    
-    static let mock = Order(product: Product.mock.first!, amount: 3)
+    static let mock = Order(product: Product.mock(shop: Shop.mock.first!).first!, amount: 3)
 }

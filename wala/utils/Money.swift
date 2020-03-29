@@ -20,6 +20,9 @@ enum Currency: String {
 }
 
 extension Money {
+    
+    static let zero = Money(currency: .CHF, amount: 0)
+    
     var string: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency

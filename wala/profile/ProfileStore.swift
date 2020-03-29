@@ -41,6 +41,11 @@ final class ProfileStore: ObservableObject {
         phone = userDefaults.string(forKey: phoneKey) ?? ""
     }
     
+    var isComplete: Bool {
+        let isEmpty = name.isEmpty || country.isEmpty || city.isEmpty || zip.isEmpty || street.isEmpty || phone.isEmpty
+        return !isEmpty
+    }
+    
     func save() {
         let userDefaults = UserDefaults.standard
         userDefaults.set(name, forKey: nameKey)
