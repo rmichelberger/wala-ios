@@ -44,7 +44,7 @@ struct MapView: UIViewRepresentable {
         
         
         if let shop = shops.first {
-            let region = MKCoordinateRegion(center: shop.coordinates, latitudinalMeters: 50, longitudinalMeters: 50)
+            let region = MKCoordinateRegion(center: shop.coordinates, latitudinalMeters: 2500, longitudinalMeters: 2500)
             view.setRegion(region, animated: true)
         }
         

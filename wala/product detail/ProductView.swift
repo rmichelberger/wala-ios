@@ -30,7 +30,7 @@ struct ProductView: View {
 struct ProductView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            ProductView(product: Product.mock(shop: Shop.mock.first!).first!)
+            ProductView(product: Product.mock(shop: Shop.mock).first!)
         }
     }
 }

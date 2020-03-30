@@ -55,7 +55,7 @@ Examples:
 #if DEBUG
 struct CustomProductView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomProductView(shop: Shop.mock.first!)
+        CustomProductView(shop: Shop.mock)
     }
 }
 #endif

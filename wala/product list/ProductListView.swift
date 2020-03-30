@@ -38,7 +38,7 @@ struct ProductListView: View {
 #if DEBUG
 struct ProductListView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductListView(shop: Shop.mock.first!, productStore: ProductStore())
+        ProductListView(shop: Shop.mock, productStore: ProductStore())
     }
 }
 #endif

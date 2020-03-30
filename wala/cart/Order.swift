@@ -23,7 +23,9 @@ struct Order: Identifiable {
 
 }
 
+#if DEBUG
 extension Order {
     
-    static let mock = Order(product: Product.mock(shop: Shop.mock.first!).first!, amount: 3)
+    static let mock = Order(product: Product.mock(shop: Shop.mock).first!, amount: 3)
 }
+#endif

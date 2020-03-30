@@ -9,17 +9,6 @@
 import UIKit
 import SwiftUI
 
-struct ShopTestView: View {
-    
-    var body: some View {
-        NavigationView {
-            ProductListView(shop: Shop.mock.first!, productStore: ProductStore())
-//            ShopDetailView(shop: Shop.mock.first)
-        }
-
-    }
-}
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?

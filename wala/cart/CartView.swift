@@ -79,7 +79,8 @@ struct CartView: View {
                 }
             }
                 .alert(isPresented: $showingAlert) {
-                    Alert(title: Text("Perseonal information missing"), message: Text("Please go to the \"Me\" tab, and fill out the form."), dismissButton: .default(Text("Ok")))
+//                    Alert(title: Text("Perseonal information missing"), message: Text("Please go to the \"Me\" tab, and fill out the form."), dismissButton: .default(Text("Ok")))
+                    Alert(title: Text("Thanks for your order 👍"), message: Text("We will send you a notification once it is ready to pick up 🚀"), dismissButton: .default(Text("Ok")))
                 }
             .onAppear() {
                 

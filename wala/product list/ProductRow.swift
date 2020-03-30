@@ -52,7 +52,7 @@ struct ProductRow: View {
 #if DEBUG
 struct ProductRow_Previews: PreviewProvider {
     static var previews: some View {
-        ProductRow(product: Product.mock(shop: Shop.mock.first!).first!)
+        ProductRow(product: Product.mock(shop: Shop.mock).first!)
     }
 }
 #endif

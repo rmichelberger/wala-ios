@@ -8,18 +8,59 @@
 
 import UIKit
 import CoreLocation
+import FirebaseFirestore
 
 struct Shop {
     let id: String
     let name: String
     let about: String
     let iconUrl: String
+    let coverImageUrl: String
     let coordinates: CLLocationCoordinate2D
     let category: Category
+    let phone: String
+    let pickupHours: String
+}
+
+extension Shop {
+    
+    init?(documentSnapshot: DocumentSnapshot) {
+        guard let dict = documentSnapshot.data() else { return nil }
+        self.init(id: documentSnapshot.documentID, dict: dict)
+    }
+    
+    private init?(id: String, dict: [String: Any]) {
+        guard
+            let name = dict["name"] as? String,
+            let about = dict["about"] as? String,
+            let iconUrl = dict["iconUrl"] as? String,
+            let phone = dict["phone"] as? String,
+            let pickupHours = dict["pickupHours"] as? String,
+            let coverImageUrl = dict["coverImageUrl"] as? String,
+            let latitude = dict["latitude"] as? Double,
+            let longitude = dict["longitude"] as? Double,
+            let category = dict["category"] as? String
+            else { return nil }
+        self.id = id
+        self.name = name
+        self.about = about
+        self.iconUrl = iconUrl
+        self.coverImageUrl = coverImageUrl
+        self.category = Category(rawValue: category) ?? .unknown
+        self.coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        self.phone = phone
+        self.pickupHours = pickupHours
+    }
+}
+
+extension Shop {
+    
+    static let mock = Shop(id: "shopId", name: "Name", about: "About", iconUrl: "", coverImageUrl: "", coordinates: CLLocationCoordinate2D(), category: .unknown, phone: "", pickupHours: "")
 }
 
 
 enum Category: String {
+    case unknown
     case food
     case fashion
     case book
@@ -33,24 +74,9 @@ enum Category: String {
         case .fashion: color = UIColor.systemPurple
         case .food: color = UIColor.systemOrange
         case .flower: color = UIColor.systemGreen
+        case .unknown: color = UIColor.wala
         }
         
         return color
     }
 }
-
-extension Shop {
-    static let mock = [
-        Shop(id: "1", name: "Büechli", about: """
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Feugiat sed lectus vestibulum mattis ullamcorper. Morbi tristique senectus et netus et malesuada fames. Faucibus pulvinar elementum integer enim neque. Tincidunt ornare massa eget egestas purus. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque. Enim neque volutpat ac tincidunt vitae semper quis lectus. Ut diam quam nulla porttitor massa id. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum. Faucibus in ornare quam viverra orci. Quis lectus nulla at volutpat diam ut venenatis. Tincidunt augue interdum velit euismod. Et ultrices neque ornare aenean. Bibendum est ultricies integer quis auctor. Neque aliquam vestibulum morbi blandit cursus risus at. Lacus vestibulum sed arcu non. Id volutpat lacus laoreet non curabitur gravida. Sit amet nisl purus in mollis nunc.
-
-Mauris ultrices eros in cursus turpis massa tincidunt dui ut. Risus feugiat in ante metus. Risus nec feugiat in fermentum posuere. Massa tempor nec feugiat nisl pretium. Laoreet non curabitur gravida arcu ac tortor dignissim convallis aenean. Et egestas quis ipsum suspendisse ultrices gravida dictum. Eget est lorem ipsum dolor sit amet. Nullam non nisi est sit amet facilisis magna. Nulla posuere sollicitudin aliquam ultrices sagittis. Ac felis donec et odio pellentesque diam volutpat. Porttitor massa id neque aliquam vestibulum morbi blandit cursus. Cursus in hac habitasse platea dictumst. Pellentesque dignissim enim sit amet venenatis urna. Eget aliquet nibh praesent tristique magna sit amet purus gravida. Cursus turpis massa tincidunt dui ut ornare lectus.
-""", iconUrl: "2", coordinates: CLLocationCoordinate2D(latitude: 47.376288, longitude: 8.541694), category: .book),
-        Shop(id: "", name: "Book 2", about: "About", iconUrl: "", coordinates: CLLocationCoordinate2D(latitude: 47.376488, longitude: 8.541390), category: .book),
-        Shop(id: "3", name: "Flower 2", about: "About", iconUrl: "", coordinates: CLLocationCoordinate2D(latitude: 47.376188, longitude: 8.541691), category: .flower),
-        Shop(id: "4", name: "Flower", about: "About", iconUrl: "", coordinates: CLLocationCoordinate2D(latitude: 47.376888, longitude: 8.541692), category: .flower),
-    ]
-    
-    
-}
-

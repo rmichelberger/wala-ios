@@ -31,7 +31,7 @@ struct ShopsView: View {
         NavigationView {
             ZStack {
                 //                NavigationLink(destination: ShopDetailView(shop: selectedShop), isActive: self.$isActive) {
-                NavigationLink(destination: ShopDetailView(shop: selectedShop ?? Shop.mock.first!), isActive: self.$isActive) {
+                NavigationLink(destination: ShopDetailView(shop: selectedShop ?? Shop.mock), isActive: self.$isActive) {
                     EmptyView()
                 }
                 MapView(shops: shopStore.shops, isActive: $isActive, selectedShop: $selectedShop)        .edgesIgnoringSafeArea(.top)
@@ -53,6 +53,10 @@ struct ShopsView: View {
                 }.padding(.top, 50)
                 //.padding(.top, 40)
                 
+            }.onAppear() {
+                self.shopStore.load()
+            }.onDisappear() {
+                self.shopStore.stopLoad()
             }
 //                            .navigationBarTitle("Shops")
                 .edgesIgnoringSafeArea(.top)
